@@ -1,10 +1,7 @@
 #!/bin/bash
 
 #colors for output -useful-
-RED='\033[1;31m'
-GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
 
 assemblerArr=(DBG CFG);
 toolArr1=(Velvet Velvet2);
@@ -36,8 +33,12 @@ then
   if [ $assemblerTool == 1 ]
   then
     toolChoice=${toolArr1[0]};
-  else
+  elif [ $assemblerTool == 2 ]
+  then
     toolChoice=${toolArr1[1]};
+  else
+    echo -e "${YELLOW}...wrong choice..."
+    exit
   fi
   ###
 
@@ -50,23 +51,34 @@ then
   if [ $assemblerTool == 1 ]
   then
     toolChoice=${toolArr2[0]};
+  elif [ $assemblerTool == 2 ]
+  then
+    toolChoice=${toolArr1[1]};
   else
-    toolChoice=${toolArr2[1]};
+    echo -e "${YELLOW}...wrong choice..."
+    exit
   fi
   ###
 
 else
-  printf "wrong choice"
+  echo -e "${YELLOW}...wrong choice..."
+  exit
 fi
 
-#output
+#output for velvet
 echo -e "${RED}filename ->" $fileName "\nassembler type ->" $assemblerChoice "\nassembler tool ->" $toolChoice
 read -r -p "Are you sure? [y/N] " response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+if [ -e ~/Desktop/Datasets/$fileName ]
 then
-    cd ~/Desktop/Tools/velvet_1.2.10;
-    echo `./velveth ~/Desktop/outputDir 21 -shortPaired ~/Desktop/Datasets/$fileName`;
-    echo -e "${YELLOW}...finished..."
+  if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+  then
+      cd ~/Desktop/Tools/velvet_1.2.10;
+      echo `./velveth ~/Desktop/outputDir 21 -shortPaired ~/Desktop/Datasets/$fileName`;
+      echo -e "${YELLOW}...finished..."
+  else
+      echo -e "${YELLOW}...stopped..."
+      exit
+  fi
 else
-    echo -e "${YELLOW}...stopped..."
+  echo -e "${YELLOW}...file doesn't exist..."
 fi

@@ -23,9 +23,9 @@ random_merge_qual_suffix = "{}_random_merge.qual"
 r_b_output = "outputs/runCA/brucella/"
 compare_with_brucella = directory_brucella + "Brucella_suis_1330.1con"
 
-contig_directory = "9-terminator/ctg/"
+contig_directory = "9-terminator/"
 
-ctg_file = "{}.ctg.fasta"
+ctg_file = "{}.fasta"
 
 blast_txt_suffix  = "{}_blast.txt"
 
@@ -50,6 +50,13 @@ COMMAND_LIST.append(command)
 # print(command)
 COMMAND_LIST.append(end_of_runca)
 COMMAND_LIST.append(start_of_blast)
+
+merge_url = "outputs/runCA/brucella/9-terminator/"
+
+#merge .scf .ctg .deg .utg
+command  = "cat {} {} {} {} > {}".format(merge_url + "brucella.ctg.fasta", merge_url + "brucella.scf.fasta",merge_url + "brucella.deg.fasta",merge_url + "brucella.utg.fasta",merge_url+"brucella.fasta")
+COMMAND_LIST.append(command)
+
 # blast2 -p blastn -i ~/Desktop/Bioinformatics/BrucellaVelvetOutput/contigs.fa -j ~/Desktop/Bioinformatics/Datasets/Brucella_suis_1330/Brucella_suis_1330.1con -m9 -o ~/Desktop/Bioinformatics/BlastResults/BrucellaBlast.txt -P 95
 command = "blast2 -p blastn -i {} -j {} -m9 -o {} -P 95".format(r_b_output + contig_directory + ctg_file.format("brucella"), compare_with_brucella, r_b_output + blast_txt_suffix.format("brucella"))
 COMMAND_LIST.append(command)

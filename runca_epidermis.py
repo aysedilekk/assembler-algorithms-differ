@@ -22,9 +22,10 @@ random_merge_qual_suffix = "{}_random_merge.qual"
 r_s_output = "outputs/runCA/s_epidermis/"
 compare_with_s_epidermis = directory_s_epidermis + "Staphylococcus_epidermidis_RP62A.1con"
 
-contig_directory = "9-terminator/ctg/"
+contig_directory = "9-terminator/"
 
-ctg_file = "{}.ctg.fasta"
+
+ctg_file = "{}.fasta"
 
 blast_txt_suffix  = "{}_blast.txt"
 
@@ -41,13 +42,20 @@ COMMAND_LIST.append(command)
 command = "cat {} {} > {}".format(directory_s_epidermis + random_qual_file, directory_s_epidermis + random_nonmatching_qual_file, directory_s_epidermis + random_merge_qual_suffix.format("s_epidermis"))
 COMMAND_LIST.append(command)
 
-command = "perl {} -l s_epidermis -s {} -q {} > s_epidermis.frg".format(fastaToCA, directory_brucella + random_merge_seq_suffix.format("s_epidermis"), directory_brucella + random_merge_qual_suffix.format("s_epidermis"))
+command = "perl {} -l s_epidermis -s {} -q {} > s_epidermis.frg".format(fastaToCA, directory_s_epidermis + random_merge_seq_suffix.format("s_epidermis"), directory_s_epidermis + random_merge_qual_suffix.format("s_epidermis"))
 COMMAND_LIST.append(command)
 # print(command)
 command  = "{} -s spec -d {} -p s_epidermis s_epidermis.frg".format(runCA, r_s_output)
 COMMAND_LIST.append(command)
 COMMAND_LIST.append(end_of_runca)
 COMMAND_LIST.append(start_of_blast)
+
+merge_url = "outputs/runCA/s_epidermis/9-terminator/"
+
+#merge .scf .ctg .deg .utg
+command  = "cat {} {} {} {} > {}".format(merge_url + "s_epidermis.ctg.fasta", merge_url + "s_epidermis.scf.fasta",merge_url + "s_epidermis.deg.fasta",merge_url + "s_epidermis.utg.fasta",merge_url+"s_epidermis.fasta")
+COMMAND_LIST.append(command)
+
 
 command = "blast2 -p blastn -i {} -j {} -m9 -o {} -P 95".format(r_s_output + contig_directory + ctg_file.format("s_epidermis"), compare_with_s_epidermis, r_s_output + blast_txt_suffix.format("s_epidermis"))
 COMMAND_LIST.append(command)

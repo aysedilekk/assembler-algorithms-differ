@@ -20,14 +20,14 @@ sudo apt-get install blast2
 * [Brucella suis](ftp://ftp.cbcb.umd.edu/pub/data/asmg_benchmark/Brucella_suis_1330.tar.gz)
 * [Staphylococcus epidermidis RP62A](ftp://ftp.cbcb.umd.edu/pub/data/asmg_benchmark/Staphylococcus_epidermidis_RP62A.tar.gz)
 
-- You can reach the datasets from;
+- You can reach the datasets from
 (ftp://ftp.ccb.jhu.edu/pub/dpuiu/CBCB/research/benchmark.shtml)
 
 ## Steps
 * Download the datasets and copy the files to "datasets/brucella" and "datasets/s_epidermis"
 * Run script as
 ```
-./script.py --tool TOOL_NAME --dataset DATASET_NAME
+./scr.py --tool TOOL_NAME --dataset DATASET_NAME
 ```
 e.g:
 ```

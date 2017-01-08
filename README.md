@@ -1,9 +1,9 @@
-# HOW DO ASSEMBLER ALGORITHMS DIFFER?
+## HOW DO ASSEMBLER ALGORITHMS DIFFER?
 
 ![gif](https://media.giphy.com/media/3o7TKuNppMPOUQwEJW/source.gif)
 
 ## Description
-    Identifying the best assembler algorithm with using different assembler algorithms
+   Identifying the best assembler algorithm with using different assembler algorithms
   ([Velvet](https://www.ebi.ac.uk/~zerbino/velvet/) & [Celera Assembler](http://wgs-assembler.sourceforge.net/wiki/index.php/RunCA)) and comparing their results.
 
 ## Requirements
@@ -12,6 +12,7 @@
 * [Velvet](https://www.ebi.ac.uk/~zerbino/velvet/)
 * Linux Distribution
 * Blast2
+
   ```
   sudo apt-get install blast2
   ```

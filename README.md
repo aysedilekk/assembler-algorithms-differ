@@ -17,8 +17,8 @@ sudo apt-get install blast2
 ```
 
 ## Datasets
-* [Brucella suis](ftp.cbcb.umd.edu/pub/data/asmg_benchmark/Brucella_suis_1330.tar.gz)
-* [Staphylococcus epidermidis RP62A](ftp.cbcb.umd.edu/pub/data/asmg_benchmark/Staphylococcus_epidermidis_RP62A.tar.gz)
+* [Brucella suis](ftp://ftp.cbcb.umd.edu/pub/data/asmg_benchmark/Brucella_suis_1330.tar.gz)
+* [Staphylococcus epidermidis RP62A](ftp://ftp.cbcb.umd.edu/pub/data/asmg_benchmark/Staphylococcus_epidermidis_RP62A.tar.gz)
 
 ## Steps
 * Download the datasets and copy the files to "datasets/brucella" and "datasets/s_epidermis"
